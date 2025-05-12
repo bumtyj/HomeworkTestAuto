@@ -20,15 +20,13 @@ public class LoginTest {
 
 
     @BeforeAll
-    static void beforeAll() {
+     static void beforeAll() {
         Configuration.browserSize = "1920x1080";
         Configuration.baseUrl = "https://demoqa.com";
 
-
-
     }
     @Test
-    void fillFormTest() {
+    void successfulRegistrationTest() {
         open("/automation-practice-form");
 
         $(cssSelector("[id=firstName]")).setValue("Sam");
@@ -38,7 +36,9 @@ public class LoginTest {
         $(byText("Male")).click();
         $(cssSelector("[id=userNumber]")).setValue("9956158955");
         $("[id=dateOfBirth-wrapper]").click();
-
+        $("[class=react-datepicker__month-select]").selectOption("July");
+        $("[class=react-datepicker__year-select]").selectOption("1997");
+        $("[class=react-datepicker__week]").selectOption("5");
         $("[id=subjectsContainer]").click();
         $("[id=subjectsInput]").click();
         $(byText("Music")).click();
