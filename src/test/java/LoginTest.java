@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 
+import java.io.File;
 
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
@@ -38,11 +39,11 @@ public class LoginTest {
         $("[id=dateOfBirth-wrapper]").click();
         $("[class=react-datepicker__month-select]").selectOption("July");
         $("[class=react-datepicker__year-select]").selectOption("1997");
-        $("[class=react-datepicker__week]").selectOption("5");
+        $(".react-datepicker__day--030:not(.react-datepicker__day--outside-month)").click();
         $("[id=subjectsContainer]").click();
         $("[id=subjectsInput]").click();
         $(byText("Music")).click();
-        $(byText("Select picture")).click();
+        File uploadFile = $("[id=uploadPicture]").uploadFile(new File("src/test/java/resourses/1.png"));
         $(byText("Current Address")).click();
         $("[class=form-control]").setValue("Sammy");
         $("[class=form-label]").scrollTo();
